@@ -44,7 +44,8 @@ def main():
     parser.add_argument('--C', type=float, default=1.0, help="Inverse of regularization strength. Smaller values cause stronger regularization")
     parser.add_argument('--max_iter', type=int, default=100, help="Maximum number of iterations to converge")
 
-    args = parser.parse_args()
+    args, unknown = parser.parse_known_args()
+    #args = parser.parse_args()
 
     run = Run.get_context()
 
@@ -55,13 +56,16 @@ def main():
     # Data is located at:
     # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
-    ds = ### YOUR CODE HERE ###
+    path="https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
+    ds = TabularDatasetFactory.from_delimited_files(path, validate=True, include_path=False, 
+                                                    infer_column_types=True,set_column_types=None, 
+                                                    separator=',', header=True, partition_format=None, 
+                                                    support_multi_line=False, empty_as_string=False)
     
     x, y = clean_data(ds)
 
     # TODO: Split data into train and test sets.
-
-    ### YOUR CODE HERE ###a
+    x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.30)
 
     model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(x_train, y_train)
 
