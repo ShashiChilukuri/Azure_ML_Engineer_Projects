@@ -112,4 +112,5 @@ cpu_cluster.delete()
 
 Here is the screenshot of deleting compute instance:
 
-![image-20220531172217490](/Users/shashi/Documents/Job/Azure/Azure_ML_Engineer_Projects/Assets/:Users:shashi:Library:Application Support:typora-user-images:image-20220531172217490.png)
+![](Assets/image1.png)
+
